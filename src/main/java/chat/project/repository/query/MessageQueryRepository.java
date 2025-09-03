@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 
 public interface MessageQueryRepository {
 
-    Page<Message> searchMessages(Long ConversationId, Long afterMessageId, LocalDateTime from,
+    Page<Message> findMessageByConversation(Long conversationId, Pageable pageable);
+    Page<Message> searchMessages(Long conversationId, Long afterMessageId, LocalDateTime from,
                                  String keyword, Pageable pageable);
+    Page<Message> searchMessagesByKeyword(Long conversationId, String keyword, Pageable pageable);
 }

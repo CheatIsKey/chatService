@@ -4,8 +4,12 @@ import chat.project.domain.Message;
 import chat.project.repository.query.MessageQueryRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface MessageRepository extends JpaRepository<Message, Long>, MessageQueryRepository {
 
+    Long countByConversationId(Long conversationId);
+    Optional<Message> findFirstByConversationIdOrderByCreatedAtDesc(Long conversationId);
 
 
 }
